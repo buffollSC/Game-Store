@@ -3,19 +3,29 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { HomePage } from './pages/home-page'
-import { Header } from './components/header'
 import { Provider } from "react-redux";
-import { store } from "./redux"
+import { HomePage } from './pages/home-page';
+import { SelectGamePage } from "./pages/select-game-page";
+import { OrderPage } from "./pages/order-page";
+import { Header } from './components/header';
+import { store } from "./redux";
+
+
 function App() {
   return (
-    <Provider store={store}>
+    <Provider store={ store }>
       <Router>
         <div className="App">
           <Header />
           <Switch>
-            <Route path="">
+            <Route exact path="/">
               <HomePage />
+            </Route>
+            <Route exact path="/app/:title">
+              <SelectGamePage />
+            </Route>
+            <Route exact path="/order">
+              <OrderPage />
             </Route>
           </Switch>
         </div>

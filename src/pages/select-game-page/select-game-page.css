@@ -1,0 +1,21 @@
+.select-game-page_content {
+    display: flex;
+}
+
+.select-game-page_left {
+    width: 70%;
+}
+
+.select-game-page_right {
+    width: 30%;
+}
+
+.select-game-page_buy-game {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.secondary-text {
+    color: rgb(80, 82, 84);
+}

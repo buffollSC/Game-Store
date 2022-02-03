@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
 import './btn-buy.css';
 export const BtnBuy = ({
   onClick,
@@ -9,14 +9,14 @@ export const BtnBuy = ({
 }) => {
   const btnClass = classNames({
     'btn': true,
-    'btn-secondary': type==='secondery',
+    'btn-secondary': type==='secondary',
     'btn-primary': type==='primary',
     'btn-small': size==='small',
     'btn-medium': size==='medium',
   })
   return (
-  <button className={btnClass} onClick={onClick}>
-      {children}
+  <button className={btnClass} onClick={ onClick }>
+      { children }
   </button>
   )
 }
