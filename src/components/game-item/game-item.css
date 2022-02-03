@@ -29,11 +29,6 @@
     padding: 10px 20px;
 }
 
-.game-item_description {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
 .game-item_buy {
     position: absolute;
     right: 0;

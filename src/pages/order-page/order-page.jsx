@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { OrderItem } from '../../components/order-item';
+import { TotalPriceOrder } from '../../components/total-price-order';
 import { totalPriceSelectGames } from '../../components/utils/total-Price-Select-Games';
 
 import './order-page.css';
@@ -23,7 +24,7 @@ export const OrderPage = () => {
             <div className='order-page_right'>
                 <div className='order-page_total-price'>
                     <span>
-                        { items.length } товаров на сумму { totalPriceSelectGames(items) }$
+                        <TotalPriceOrder items={items}/>
                     </span>
                 </div>
             </div>
