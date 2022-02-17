@@ -1,0 +1,14 @@
+.logout-icon {
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+}
+
+.logout-icon_sigout {
+    color: #e7e7e7;
+    display: inline-block;
+    line-height: 22px;
+    position: relative;
+    transform: translateY(-40%);
+    margin-right: 20px;
+}

@@ -1,0 +1,5 @@
+.login-page {
+    height: 100vh;
+    background: no-repeat url(../../../public/game-covers/GameStore.png);
+    background-size:cover;
+}

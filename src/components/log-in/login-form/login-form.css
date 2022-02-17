@@ -1,0 +1,22 @@
+.login-form {
+    width: 50vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-h4 {
+    color: rgb(17, 44, 107);
+}
+
+.login-form_subtitle {
+    width: 30vw;
+    color: rgb(17, 44, 107);
+    text-align: center;
+}
+
+.auth-link {
+    color: rgb(10, 64, 192);
+}

@@ -2,11 +2,19 @@
     display: flex;
 }
 
+.select-game-page_title {
+    margin-left: 30px;
+}
+
 .select-game-page_left {
+    margin-top: 20px;
+    margin-left: 30px;
     width: 70%;
 }
 
 .select-game-page_right {
+    margin-top: 20px;
+    margin-right: 30px;
     width: 30%;
 }
 

@@ -1,0 +1,13 @@
+.login-icon {
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+}
+
+.login-icon_sigin {
+    color: #e7e7e7;
+    display: inline-block;
+    line-height: 22px;
+    position: relative;
+    transform: translateY(-50%);
+}

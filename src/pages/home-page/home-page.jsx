@@ -1,7 +1,36 @@
 import React from 'react';
-import { GameItem } from '../../components/game-item';
+import { Redirect } from 'react-router-dom';
+import { GameItem } from '../../components/game/game-item';
+import { useAuth } from '../../components/hooks/useAuth';
 import './home-page.css';
 const GAMES = [
+    {
+        image: '/game-covers/warcraft3-reforged.jpg',
+        title: 'Warcraft III: Reforged',
+        video: 'https://www.youtube.com/embed/oDZqQTnh5Hk',
+        genres: ['Компьютерная ролевая игра', 'Стратегия'],
+        price: 33,
+        id: 7,
+        description: 'Warcraft III: Reforged представляет собой обновлённую версию Warcraft III: Reign of Chaos и дополнения к ней The Frozen Throne. Она сохраняет тот же геймплей, сюжет и в целом ту же структуру уровней, что и в оригинальных играх; основными отличиями являются обновлённая графика в формате Ultra HD, вновь записанный звук и улучшенная сетевая поддержка..'
+    },
+    {
+        image: '/game-covers/call-of-Duty.webp',
+        title: 'Call of Duty: Vanguard',
+        video: 'https://www.youtube.com/embed/n7c8D47nwHQ',
+        genres: ['Экшен', 'Шутер'],
+        price: 43,
+        id: 8,
+        description: 'Cерия компьютерных игр в жанре шутера от первого лица, выпускаемая американской компанией Activision. Разработкой игр серии занимались такие студии, как Infinity Ward, Treyarch и Sledgehammer Games. Ранние игры серии, начиная с самой первой игры 2003 года, были посвящены Второй мировой войне; в дальнейшем в рамках серии выходили и игры, действие которых разворачивалось во времена холодной войны, в недалёком будущем, даже в космосе. Отдельные игры серии, объединённые общим временем действия, связаны друг с другом также повествованием и персонажами.'
+    },
+    {
+        image: '/game-covers/Skyrim.jpg',
+        title: 'The Elder Scrolls 5: Skyrim',
+        video: 'https://www.youtube.com/embed/JSRtYpNRoN0',
+        genres: ['Экшен', 'Открытый мир', 'РПГ'],
+        price: 28,
+        id: 9,
+        description: 'The Elder Scrolls V: Skyrim — мультиплатформенная компьютерная ролевая игра с открытым миром, разработанная студией Bethesda Game Studios и выпущенная компанией Bethesda Softworks. Это пятая часть в серии The Elder Scrolls.'
+    },
     {
         image: '/game-covers/forza_5.jpeg',
         title: 'Forza Horizon 5',
@@ -56,39 +85,16 @@ const GAMES = [
         id: 6,
         description: 'Assassin’s Creed Valhalla — мультиплатформенная компьютерная игра в жанре action/RPG, разработанная студией Ubisoft Montreal под издательством компании Ubisoft. Является двенадцатой игрой в серии игр Assassin’s Creed.'
     },
-    {
-        image: '/game-covers/warcraft3-reforged.jpg',
-        title: 'Warcraft III: Reforged',
-        video: 'https://www.youtube.com/embed/oDZqQTnh5Hk',
-        genres: ['Компьютерная ролевая игра', 'Стратегия'],
-        price: 33,
-        id: 5,
-        description: 'Warcraft III: Reforged представляет собой обновлённую версию Warcraft III: Reign of Chaos и дополнения к ней The Frozen Throne. Она сохраняет тот же геймплей, сюжет и в целом ту же структуру уровней, что и в оригинальных играх; основными отличиями являются обновлённая графика в формате Ultra HD, вновь записанный звук и улучшенная сетевая поддержка..'
-    },
-    {
-        image: '/game-covers/call-of-Duty.webp',
-        title: 'Call of Duty: Vanguard',
-        video: 'https://www.youtube.com/embed/n7c8D47nwHQ',
-        genres: ['Экшен', 'Шутер'],
-        price: 43,
-        id: 5,
-        description: 'Cерия компьютерных игр в жанре шутера от первого лица, выпускаемая американской компанией Activision. Разработкой игр серии занимались такие студии, как Infinity Ward, Treyarch и Sledgehammer Games. Ранние игры серии, начиная с самой первой игры 2003 года, были посвящены Второй мировой войне; в дальнейшем в рамках серии выходили и игры, действие которых разворачивалось во времена холодной войны, в недалёком будущем, даже в космосе. Отдельные игры серии, объединённые общим временем действия, связаны друг с другом также повествованием и персонажами.'
-    },
-    {
-        image: '/game-covers/Skyrim.jpg',
-        title: 'The Elder Scrolls 5: Skyrim',
-        video: 'https://www.youtube.com/embed/JSRtYpNRoN0',
-        genres: ['Экшен', 'Открытый мир', 'РПГ'],
-        price: 28,
-        id: 5,
-        description: 'The Elder Scrolls V: Skyrim — мультиплатформенная компьютерная ролевая игра с открытым миром, разработанная студией Bethesda Game Studios и выпущенная компанией Bethesda Softworks. Это пятая часть в серии The Elder Scrolls.'
-    },
 ]
 
 export const  HomePage = () => {
-  return (
-    <div className='home-page'>
-        {GAMES.map(game => <GameItem game={game} key={game.id} />)}
-    </div>
-  )
+    const {isAuth} = useAuth();
+
+    return isAuth ? (
+        <div className='home-page'>
+            {GAMES.map(game => <GameItem game={ game } key={ game.id } />)}
+        </div>
+    ) : (
+        <Redirect to='/login' />
+    )
 }

@@ -1,0 +1,28 @@
+.auth-form {
+    width: 50vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form_form {
+    width: 30vw;
+}
+
+.auth-form-h4 {
+    color: rgb(17, 44, 107);
+}
+.auth-form_subtitle {
+    width: 30vw;
+    color: rgb(180, 184, 193);
+    text-align: center;
+}
+.auth-form_input {
+    color: aqua;
+}
+
+.login-link {
+    color: rgb(10, 64, 192);
+}
