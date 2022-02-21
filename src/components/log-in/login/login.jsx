@@ -12,22 +12,12 @@ export const Login = () => {
     const { push } = useHistory();
     const { id } = useSelector((state) => state.user);
     const dataBaseRef = ref(getDatabase());
-
-    get(child(dataBaseRef, "user: " + id))
-            .then((snapshot) => {
-                if (snapshot.exists()) {
-                    const values = snapshot.val();
-                    for(let val in values) {
-                        dispatch(setItemInCart(values[val]))
-                    }
-                } else {
-                    console.log("No data available");
-                }
-            })
-            .catch((error) => { alert(error) });
+    const valuesWithDataBase = [];
+    
 
     const handleLogin = (email, password) => {
         const auth = getAuth();
+        
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 dispatch(setUser({
@@ -37,9 +27,26 @@ export const Login = () => {
                 }));
                 push('/');
             })   
-            .catch(() => alert('Invaild user!'))
-            
+            .catch(() => alert('Invaild user!'))     
     }
+    get(child(dataBaseRef, "user: " + id))
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    const values = snapshot.val();
+                    for(let val in values) {
+                        valuesWithDataBase.push(values[val])
+                    }
+                } else {
+                    console.log("No data available");
+                }
+                return valuesWithDataBase;
+            })
+            .then((value) => {
+                value.map((val) => {
+                    dispatch(setItemInCart(val))
+                })
+            })
+            .catch((error) => { alert(error) });
     
     return (
         <LoginForm

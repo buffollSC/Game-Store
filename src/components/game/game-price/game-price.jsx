@@ -18,31 +18,27 @@ export const GamePrice = ({ game }) => {
   
     const handlerClick = (event) => {
         event.stopPropagation();
-        event.preventDefault();
         if(isItemInCart) {
             dispatch(deleteItemFromCart(game.id));
         } else {
-            setCartInDataBase()
             dispatch(setItemInCart(game))
-            
+            setCartInDataBase()           
         }
     }
      
-    function setCartInDataBase() {
-        items.map((users) => {
+    const setCartInDataBase = () => {
             set(newCartRef, {
-                    image: users.image,
-                    title: users.title,
-                    video: users.video,
-                    genres: users.genres,
-                    price: users.price,
-                    id: users.id,
-                    description: users.description
-                
+                    email: email,
+                    image: game.image,
+                    title: game.title,
+                    video: game.video,
+                    genres: game.genres,
+                    price: game.price,
+                    id: game.id,
+                    description: game.description
             })
             .then(() => console.log("write in BD"))
-            .catch((console.error()))
-        })     
+            .catch((console.error()))  
     }
     
     return (
