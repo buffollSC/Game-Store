@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteItemFromCart, setItemInCart } from '../../../redux/cart/reducer';
 import { BtnBuy } from '../../buttons/btn-buy';
-import { getDatabase, ref, set, child, get, push  } from "firebase/database";
+import { getDatabase, ref, set, push  } from "firebase/database";
 import './game-price.css';
 
 export const GamePrice = ({ game }) => {
@@ -14,7 +14,6 @@ export const GamePrice = ({ game }) => {
     const dataBase = getDatabase();
     const cartListRef = ref(dataBase, "user: " + id);
     const newCartRef = push(cartListRef);
-   
   
     const handlerClick = (event) => {
         event.stopPropagation();

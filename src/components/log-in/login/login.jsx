@@ -10,10 +10,7 @@ import { setItemInCart } from '../../../redux/cart/reducer';
 export const Login = () => {
     const dispatch = useDispatch();
     const { push } = useHistory();
-    const { id } = useSelector((state) => state.user);
     const dataBaseRef = ref(getDatabase());
-    const valuesWithDataBase = [];
-    
 
     const handleLogin = (email, password) => {
         const auth = getAuth();
@@ -25,29 +22,24 @@ export const Login = () => {
                     token: user.accessToken,
                     id: user.uid, 
                 }));
-                push('/');
-            })   
-            .catch(() => alert('Invaild user!'))     
+                return { user }
+            })
+            .then(({ user }) => {
+                get(child(dataBaseRef, "user: " + user.uid))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const values = snapshot.val();
+                            for(let val in values) {
+                                dispatch(setItemInCart(values[val]))
+                            }
+                        } else {
+                            console.log("No data available");
+                        }
+                        push('/');
+                    })
+            })
+            .catch((error) => { alert(error) })
     }
-    get(child(dataBaseRef, "user: " + id))
-            .then((snapshot) => {
-                if (snapshot.exists()) {
-                    const values = snapshot.val();
-                    for(let val in values) {
-                        valuesWithDataBase.push(values[val])
-                    }
-                } else {
-                    console.log("No data available");
-                }
-                return valuesWithDataBase;
-            })
-            .then((value) => {
-                value.map((val) => {
-                    dispatch(setItemInCart(val))
-                })
-            })
-            .catch((error) => { alert(error) });
-    
     return (
         <LoginForm
             title='Войти'
