@@ -1,7 +1,7 @@
 import React from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, child, get, onValue  } from "firebase/database";
-import { useDispatch, useSelector } from 'react-redux';
+import { getDatabase, ref, child, get } from "firebase/database";
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { LoginForm } from '../login-form/login-form';
 import { setUser } from '../../../redux/users/reducer';
@@ -43,7 +43,7 @@ export const Login = () => {
     return (
         <LoginForm
             title='Войти'
-            handleClick={handleLogin}
+            handleClick={ handleLogin }
         />
     )
 };
