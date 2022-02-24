@@ -14,8 +14,9 @@ export const GameItem = ({ game }) =>  {
     
     const selectCoverGame = () => {
         dispatch(setCurrenGame(game));
-        history.push(`/app/${game.title}`)
+        history.push(`/app/${ game.title }`)
     }
+
     return (
         <div className='game-item' onClick={ selectCoverGame }>
             <GameCover image={ game.image }/>
