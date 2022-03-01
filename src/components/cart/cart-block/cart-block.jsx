@@ -20,14 +20,14 @@ export const CartBlock = () => {
     })
     return (
         <div className='cart-block'>
-            <ItemsInCart quantity={items.length}/>
-            <BiCartAlt onClick={() => setCartMenuVisible(!isCartMenuVisible)} size={ 25 } className='cart-block_icon'/>
+            <ItemsInCart quantity={ items.length }/>
+            <BiCartAlt onClick={ () => setCartMenuVisible(!isCartMenuVisible) } size={ 25 } className='cart-block_icon'/>
             { totalPrice > 0 ? 
                 <span className='cart-block_tota-price'>{ totalPrice }$</span> 
                 : null
             }
             { isCartMenuVisible ? 
-                <CartMenu items={ items } onClick={handlerOrder} visible={setCartMenuVisible}/>
+                <CartMenu items={ items } onClick={ handlerOrder } visible={ setCartMenuVisible }/>
                 : null 
             }
         </div>

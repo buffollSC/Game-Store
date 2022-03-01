@@ -6,3 +6,26 @@
     justify-content: center;
     position: relative;
 }
+
+.loader-margin {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.pages {
+    margin: 20px 0;
+}
+.page, .select-number-page {
+    border: 1px solid lightgray;
+    border-radius: 100%;
+    padding: 5px 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.select-number-page {
+    border: 3px solid gray;
+    font-size: 700;
+}

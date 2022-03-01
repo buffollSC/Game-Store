@@ -5,7 +5,7 @@ import { deleteItemFromCart, setItemInCart } from '../../../redux/cart/reducer';
 import { BtnBuy } from '../../buttons/btn-buy';
 import './game-price.css';
 
-export const GamePrice = ({ game }) => {
+export const GamePrice = ({ gamePrice, game, video }) => {
     const dispatch = useDispatch();
     const items = useSelector(state => state.cart.itensInCart);
     const { email, id } = useSelector((state) => state.user);
@@ -14,7 +14,7 @@ export const GamePrice = ({ game }) => {
     const dataBase = getDatabase();
     const cartListRef = ref(dataBase, "user: " + id);   
     const newCartRef = push(cartListRef);
-    
+
     const handlerClick = (event) => {
         event.stopPropagation();
         if(isItemInCart) {
@@ -27,18 +27,18 @@ export const GamePrice = ({ game }) => {
     }
      
     const setCartInDataBase = () => {
-            set(newCartRef, {
-                    email: email,
-                    image: game.image,
-                    title: game.title,
-                    video: game.video,
-                    genres: game.genres,
-                    price: game.price,
-                    id: game.id,
-                    description: game.description
-            })
-                .then(() => console.log("write in BD"))
-                .catch((console.error()))  
+        set(newCartRef, { 
+            email: email,
+            background_image: game.background_image,
+            name: game.name,
+            video: video,
+            genres: game.genres,
+            reviews_text_count: game.reviews_text_count,
+            id: game.id,
+            description_raw: game.description_raw
+        })
+            .then(() => console.log("write in BD"))
+            .catch((console.error()))  
     }
     
     const deleteSelectGameFromDB = () => {
@@ -62,7 +62,7 @@ export const GamePrice = ({ game }) => {
     }  
     return (
         <div className='game-price'>
-            <span className='game-price_span'>{ game.price }$</span>
+            <span className='game-price_span'>{ gamePrice }$</span>
             <BtnBuy 
                 onClick={ handlerClick }
                 type={ isItemInCart ? "secondary" : "primary" }

@@ -14,16 +14,16 @@ export const OrderItem = ({ game }) => {
     return (
         <div className='order-item'>
             <div className='order-item_cover'>
-                <GameCover image={game.image} />
+                <GameCover image={game.background_image} />
             </div>
             <div className='order-item_title'>
                 <span>
-                    {game.title}
+                    {game.name}
                 </span>
             </div>
             <div className='order-item_price'>
                 <span>
-                    {game.price}$
+                    {game.reviews_text_count}$
                     <AiOutlineCloseCircle 
                         size={25}
                         className='cart-item_delete-icon'

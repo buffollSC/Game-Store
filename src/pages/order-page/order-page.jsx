@@ -6,6 +6,7 @@ import './order-page.css';
 
 export const OrderPage = () => {
     const items = useSelector(state => state.cart.itensInCart);
+    console.log('===>', items)
     
     return items < 1 ?
     (
@@ -15,7 +16,7 @@ export const OrderPage = () => {
     ) : (
         <div className='order-page'>
             <div className='order-page_left'>
-                { items.map(game => <OrderItem game={game} key={game.title}/> )}
+                { items.map(game => <OrderItem game={game} key={game.name}/> )}
             </div>
             <div className='order-page_right'>
                 <div className='order-page_total-price'>

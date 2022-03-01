@@ -29,6 +29,7 @@ export const Login = () => {
                     .then((snapshot) => {
                         if (snapshot.exists()) {
                             const values = snapshot.val();
+                            console.log('==>', values)
                             for(let val in values) {
                                 dispatch(setItemInCart(values[val]))
                             }

@@ -11,9 +11,9 @@ export const CartMenu = ({ items, onClick}) => {
                 {
                     items.length > 0 ? items.map(game => (
                     <CartItem 
-                        key={ game.title } 
-                        price={ game.price } 
-                        title={ game.title } 
+                        key={ game.name } 
+                        price={ game.reviews_text_count } 
+                        title={ game.name } 
                         id={ game.id }/>)) 
                     : "Корзина пуста"
                 }

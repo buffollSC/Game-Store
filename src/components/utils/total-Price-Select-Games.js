@@ -1,1 +1,1 @@
-export const totalPriceSelectGames = items => items.reduce((acc, game) => acc += game.price, 0);
+export const totalPriceSelectGames = items => items.reduce((acc, game) => acc += game.reviews_text_count, 0);
